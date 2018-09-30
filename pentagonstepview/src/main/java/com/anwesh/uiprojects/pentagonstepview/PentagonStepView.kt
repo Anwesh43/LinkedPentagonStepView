@@ -167,4 +167,25 @@ class PentagonStepView (ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : PentagonStepView, var animated : Boolean = false) {
+
+        private val ps : PentagonStep = PentagonStep(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#BDBDBD"))
+            animator.animate {
+                ps.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ps.startUpdating {
+                animator.start()
+            }
+        }
+    }
  }
