@@ -4,6 +4,7 @@ package com.anwesh.uiprojects.pentagonstepview
  * Created by anweshmishra on 01/10/18.
  */
 
+import android.app.Activity
 import android.view.MotionEvent
 import android.view.View
 import android.content.Context
@@ -188,6 +189,14 @@ class PentagonStepView (ctx : Context) : View(ctx) {
             ps.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        fun create(activity : Activity) : PentagonStepView {
+            val view : PentagonStepView = PentagonStepView(activity)
+            activity.setContentView(view)
+            return view 
         }
     }
  }
