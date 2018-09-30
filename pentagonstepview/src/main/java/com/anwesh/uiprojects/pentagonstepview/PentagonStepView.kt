@@ -178,6 +178,7 @@ class PentagonStepView (ctx : Context) : View(ctx) {
 
         fun render(canvas : Canvas, paint : Paint) {
             canvas.drawColor(Color.parseColor("#BDBDBD"))
+            ps.draw(canvas, paint)
             animator.animate {
                 ps.update {i, scl ->
                     animator.stop()
@@ -196,7 +197,7 @@ class PentagonStepView (ctx : Context) : View(ctx) {
         fun create(activity : Activity) : PentagonStepView {
             val view : PentagonStepView = PentagonStepView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
  }
